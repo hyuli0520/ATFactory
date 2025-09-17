@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float mouseSensitivity = 1f;
+    public float gravity = -9.81f;
 
     private IMovement _movement;
     private IInputReader _inputReader;
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
         var input = new InputSystem_Actions();
 
         _inputReader = new NewInputReader(input);
-        _movement = new PlayerMovement(controller, moveSpeed);
+        _movement = new PlayerMovement(controller, moveSpeed, gravity);
         _look = new FPSLook(Camera.main.transform, transform, mouseSensitivity);
     }
 
