@@ -16,4 +16,10 @@ public class NewInputReader : IInputReader
         Vector2 inputVec = _input.Player.Move.ReadValue<Vector2>();
         return new Vector3(inputVec.x, 0, inputVec.y);
     }
+
+    public Vector2 ReadRotation()
+    {
+        Vector2 inputVec = _input.Player.Look.ReadValue<Vector2>();
+        return inputVec;
+    }
 }
