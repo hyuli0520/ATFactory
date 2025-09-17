@@ -3,9 +3,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float mouseSensitivity = 1f;
 
     private IMovement _movement;
     private IInputReader _inputReader;
+    private ILook _look;
 
     private void Awake()
     {
@@ -14,14 +16,18 @@ public class PlayerController : MonoBehaviour
 
         _inputReader = new NewInputReader(input);
         _movement = new PlayerMovement(controller, moveSpeed);
+        _look = new FPSLook(Camera.main.transform, transform, mouseSensitivity);
     }
 
     private void Update()
     {
         Vector3 inputDir = _inputReader.ReadMovement();
+        Vector2 inputRotation = _inputReader.ReadRotation();
+
         Vector3 moveDir = Camera.main.transform.TransformDirection(inputDir);
         moveDir.y = 0;
 
         _movement.Move(moveDir);
+        _look.Look(inputRotation);
     }
 }
