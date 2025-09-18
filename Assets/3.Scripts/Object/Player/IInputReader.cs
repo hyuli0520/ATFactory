@@ -8,4 +8,5 @@ public interface IInputReader
     Vector3 ReadMovement();
     Vector2 ReadRotation();
     bool ReadJump();
+    bool ReadLeftClick();
 }
