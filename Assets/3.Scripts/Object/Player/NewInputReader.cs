@@ -27,4 +27,9 @@ public class NewInputReader : IInputReader
     {
         return _input.Player.Jump.triggered;
     }
+
+    public bool ReadLeftClick()
+    {
+        return _input.Player.Attack.triggered;
+    }
 }
