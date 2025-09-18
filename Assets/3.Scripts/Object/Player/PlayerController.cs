@@ -50,13 +50,13 @@ public class PlayerController : MonoBehaviour
         var camera = Camera.main;
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit, range))
         {
-            var mineable = hit.collider.GetComponent<IMineable>();
+            var mineable = hit.collider.GetComponent<IMinable>();
             if (mineable != null)
                 StartCoroutine(MineRoutine(mineable));
         }
     }
 
-    private IEnumerator MineRoutine(IMineable target)
+    private IEnumerator MineRoutine(IMinable target)
     {
         _isMining = true;
         yield return new WaitForSeconds(_tool.MiningTime);

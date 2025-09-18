@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Rock : MonoBehaviour, IMineable
+public class Rock : MonoBehaviour, IMinable
 {
     [SerializeField] private int durability = 5;
     public bool IsDepleted => durability <= 0;
