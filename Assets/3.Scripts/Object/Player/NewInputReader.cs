@@ -22,4 +22,9 @@ public class NewInputReader : IInputReader
         Vector2 inputVec = _input.Player.Look.ReadValue<Vector2>();
         return inputVec;
     }
+
+    public bool ReadJump()
+    {
+        return _input.Player.Jump.triggered;
+    }
 }
