@@ -33,24 +33,27 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        var ui = Managers.UI;
+
         Vector3 inputDir = _inputReader.ReadMovement();
         Vector2 inputRotation = _inputReader.ReadRotation();
 
         Vector3 moveDir = Camera.main.transform.TransformDirection(inputDir);
         moveDir.y = 0;
 
+        if (!ui.activeInven)
+        {
+            _look.Look(inputRotation);
+            if (_inputReader.ReadLeftClick() && !_isMining)
+                TryMine();
+        }
         _movement.Move(moveDir);
-        _look.Look(inputRotation);
 
         if (_inputReader.ReadJump())
             _movement.Jump();
 
-        if (_inputReader.ReadLeftClick() && !_isMining)
-            TryMine();
-
         if (_inputReader.ReadTab())
         {
-            var ui = Managers.UI;
             ui.activeInven = !ui.activeInven;
             ui.inven.gameObject.SetActive(ui.activeInven);
             if (ui.activeInven)
