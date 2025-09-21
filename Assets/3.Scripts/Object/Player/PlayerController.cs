@@ -16,10 +16,12 @@ public class PlayerController : MonoBehaviour
 
     private bool _isMining = false;
 
+    private InputSystem_Actions input;
+
     private void Awake()
     {
         var controller = GetComponent<CharacterController>();
-        var input = new InputSystem_Actions();
+        input = new InputSystem_Actions();
 
         _inputReader = new NewInputReader(input);
         _movement = new PlayerMovement(controller, moveSpeed, gravity, jumpHeight);
@@ -56,6 +58,9 @@ public class PlayerController : MonoBehaviour
             else
                 Cursor.lockState = CursorLockMode.Locked;
         }
+
+        if (Managers.UI.hotbar != null)
+            Managers.UI.hotbar.WheelSlot(input);
     }
 
     private void TryMine()
