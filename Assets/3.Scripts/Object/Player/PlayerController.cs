@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
         _movement = new PlayerMovement(controller, moveSpeed, gravity, jumpHeight);
         _look = new FPSLook(Camera.main.transform, transform, mouseSensitivity);
         _tool = new Pickaxe();
+
+        var manager = Managers.Instance;
     }
 
     private void Update()
@@ -43,6 +45,17 @@ public class PlayerController : MonoBehaviour
 
         if (_inputReader.ReadLeftClick() && !_isMining)
             TryMine();
+
+        if (_inputReader.ReadTab())
+        {
+            var ui = Managers.UI;
+            ui.activeInven = !ui.activeInven;
+            ui.inven.gameObject.SetActive(ui.activeInven);
+            if (ui.activeInven)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     private void TryMine()
