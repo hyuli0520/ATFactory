@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
             _look.Look(inputRotation);
             if (_inputReader.ReadLeftClick() && !_isMining)
                 TryMine();
+            if (Managers.UI.hotbar != null)
+                Managers.UI.hotbar.WheelSlot(input);
         }
         _movement.Move(moveDir);
 
@@ -61,9 +63,6 @@ public class PlayerController : MonoBehaviour
             else
                 Cursor.lockState = CursorLockMode.Locked;
         }
-
-        if (Managers.UI.hotbar != null)
-            Managers.UI.hotbar.WheelSlot(input);
     }
 
     private void TryMine()
