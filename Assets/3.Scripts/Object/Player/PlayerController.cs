@@ -16,33 +16,53 @@ public class PlayerController : MonoBehaviour
 
     private bool _isMining = false;
 
+    private InputSystem_Actions input;
+
     private void Awake()
     {
         var controller = GetComponent<CharacterController>();
-        var input = new InputSystem_Actions();
+        input = new InputSystem_Actions();
 
         _inputReader = new NewInputReader(input);
         _movement = new PlayerMovement(controller, moveSpeed, gravity, jumpHeight);
         _look = new FPSLook(Camera.main.transform, transform, mouseSensitivity);
         _tool = new Pickaxe();
+
+        var manager = Managers.Instance;
     }
 
     private void Update()
     {
+        var ui = Managers.UI;
+
         Vector3 inputDir = _inputReader.ReadMovement();
         Vector2 inputRotation = _inputReader.ReadRotation();
 
         Vector3 moveDir = Camera.main.transform.TransformDirection(inputDir);
         moveDir.y = 0;
 
+        if (!ui.activeInven)
+        {
+            _look.Look(inputRotation);
+            if (_inputReader.ReadLeftClick() && !_isMining)
+                TryMine();
+            if (Managers.UI.hotbar != null)
+                Managers.UI.hotbar.WheelSlot(input);
+        }
         _movement.Move(moveDir);
-        _look.Look(inputRotation);
 
         if (_inputReader.ReadJump())
             _movement.Jump();
 
-        if (_inputReader.ReadLeftClick() && !_isMining)
-            TryMine();
+        if (_inputReader.ReadTab())
+        {
+            ui.activeInven = !ui.activeInven;
+            ui.inven.gameObject.SetActive(ui.activeInven);
+            if (ui.activeInven)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     private void TryMine()
