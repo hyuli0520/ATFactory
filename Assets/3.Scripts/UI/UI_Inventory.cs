@@ -10,11 +10,12 @@ public class UI_Inventory : MonoBehaviour
     {
         foreach (var slot in slots)
         {
-            if (slot.CanAdd(item))
+            if (!slot.IsEmpty && slot.itemData == item && slot.count < slot.maxStack)
             {
                 int space = slot.maxStack - slot.count;
                 int toAdd = Mathf.Min(space, amount);
                 slot.Add(toAdd);
+                slot.AddItem(slot.itemData, slot.count);
                 amount -= toAdd;
 
                 if (amount <= 0) return;
@@ -36,7 +37,6 @@ public class UI_Inventory : MonoBehaviour
                 if (amount <= 0) return;
             }
         }
-
 
         if (amount > 0)
         {
