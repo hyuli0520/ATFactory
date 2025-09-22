@@ -78,7 +78,7 @@ public class UI_Inven_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         iconImage.gameObject.SetActive(true);
         countText.gameObject.SetActive(true);
-        countText.text = itemCount.ToString();
+        countText.text = count.ToString();
 
         SetColor(1);
     }
@@ -105,23 +105,42 @@ public class UI_Inven_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void ChangeSlot()
     {
-        var from = DragSlot.instance.dragSlot;  // 드래그해온 슬롯
+        var from = DragSlot.instance.dragSlot;
         if (from == null) return;
 
-        // 현재 슬롯 데이터 백업
-        ItemData targetItem = itemData;
-        int targetCount = count;
+        if (from.itemData != null && itemData != null && from.itemData == itemData)
+        {
+            int total = count + from.count;
+            int max = itemData.maxStack;
 
-        // 드래그 슬롯 아이템 → 현재 슬롯으로 이동
-        if (from.itemData != null)
-            AddItem(from.itemData, from.count);
-        else
-            ClearSlot();
+            if (total <= max)
+            {
+                count = total;
+                from.ClearSlot();
+            }
+            else
+            {
+                count = max;
+                from.count = total - max;
+                from.AddItem(from.itemData, from.count);
+            }
 
-        // 원래 현재 슬롯 아이템 → 드래그 슬롯으로 이동
-        if (targetItem != null)
-            from.AddItem(targetItem, targetCount);
+            AddItem(itemData, count);
+        }
         else
-            from.ClearSlot();
+        {
+            ItemData targetItem = itemData;
+            int targetCount = count;
+
+            if (from.itemData != null)
+                AddItem(from.itemData, from.count);
+            else
+                ClearSlot();
+
+            if (targetItem != null)
+                from.AddItem(targetItem, targetCount);
+            else
+                from.ClearSlot();
+        }
     }
 }
