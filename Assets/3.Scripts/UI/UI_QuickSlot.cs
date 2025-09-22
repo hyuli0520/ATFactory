@@ -67,10 +67,8 @@ public class UI_QuickSlot : MonoBehaviour
     public void WheelSlot(InputSystem_Actions input)
     {
         var scroll = input.UI.ScrollWheel.ReadValue<Vector2>().y;
-        Debug.Log($"Scroll y is {scroll}");
         if (scroll > 0f)
         {
-            Debug.Log("Scroll Up");
             currentIndex--;
             if (currentIndex < 0)
                 currentIndex = slots.Count - 1;
@@ -78,7 +76,6 @@ public class UI_QuickSlot : MonoBehaviour
         }
         else if (scroll < 0f)
         {
-            Debug.Log("Scroll Down");
             currentIndex++;
             if (currentIndex >= slots.Count)
                 currentIndex = 0;
