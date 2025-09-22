@@ -17,10 +17,12 @@ public class PlayerController : MonoBehaviour
     private bool _isMining = false;
 
     private InputSystem_Actions input;
+    private PlayerBuilding build;
 
     private void Awake()
     {
         var controller = GetComponent<CharacterController>();
+        build = GetComponent<PlayerBuilding>();
         input = new InputSystem_Actions();
 
         _inputReader = new NewInputReader(input);
@@ -44,8 +46,20 @@ public class PlayerController : MonoBehaviour
         if (!ui.activeInven)
         {
             _look.Look(inputRotation);
-            if (_inputReader.ReadLeftClick() && !_isMining)
-                TryMine();
+
+            if (ui.hotbar.slots[ui.hotbar.currentIndex].itemData != null && ui.hotbar.slots[ui.hotbar.currentIndex].itemData.itemType == ItemType.Build)
+            {
+                if (_inputReader.ReadLeftClick())
+                {
+                    build.Build();
+                }
+            }
+            else
+            {
+                if (_inputReader.ReadLeftClick() && !_isMining)
+                    TryMine();
+            }
+
             if (Managers.UI.hotbar != null)
                 Managers.UI.hotbar.WheelSlot(input);
         }

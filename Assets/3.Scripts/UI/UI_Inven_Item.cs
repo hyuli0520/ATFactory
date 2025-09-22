@@ -1,3 +1,4 @@
+using EasyBuildSystem.Features.Runtime.Buildings.Part;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,9 +7,17 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Inventory/ItemData")]
 public class ItemData : ScriptableObject
 {
+    public ItemType itemType;
+    public BuildingPart part;
     public string itemName;
     public Sprite icon;
     public int maxStack = 99;
+}
+
+public enum ItemType
+{
+    Build,
+    Ore,
 }
 
 [System.Serializable]
