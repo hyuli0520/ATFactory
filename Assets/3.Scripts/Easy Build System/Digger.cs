@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Digger : MonoBehaviour
+public class Digger : MonoBehaviour, IInteractable
 {
     [Header("Mining Settings")]
     public float mineInterval = 1.0f;
@@ -36,5 +36,19 @@ public class Digger : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * mineRange);
+    }
+
+    public string GetInteractionText()
+    {
+        return "E: ÈÞ´ë¿ë Ã¤±¼±â ¿­±â";
+    }
+
+    public void Interact(PlayerController player)
+    {
+        var ui = Managers.UI;
+        ui.digger.gameObject.SetActive(true);
+        ui.activeInven = true;
+        ui.inven.gameObject.SetActive(ui.activeInven);
+        Cursor.lockState = CursorLockMode.None;
     }
 }

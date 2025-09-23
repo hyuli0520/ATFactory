@@ -74,6 +74,9 @@ public class PlayerController : MonoBehaviour
             {
                 if (_inputReader.ReadLeftClick() && !_isMining)
                     TryMine();
+
+                if (_inputReader.ReadInteract())
+                    TryInteract();
             }
 
             if (Managers.UI.hotbar != null)
@@ -103,6 +106,20 @@ public class PlayerController : MonoBehaviour
             var mineable = hit.collider.GetComponent<IMinable>();
             if (mineable != null)
                 StartCoroutine(MineRoutine(mineable));
+        }
+    }
+
+    private void TryInteract()
+    {
+        var camera = Camera.main;
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit, range))
+        {
+            var interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                interactable.Interact(this);
+                Debug.Log($"Interacted with {hit.collider.name}");
+            }
         }
     }
 
