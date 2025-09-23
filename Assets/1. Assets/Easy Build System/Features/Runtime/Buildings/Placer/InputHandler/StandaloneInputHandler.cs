@@ -105,61 +105,61 @@ namespace EasyBuildSystem.Features.Runtime.Buildings.Placer.InputHandler
 
         void OnEnable()
         {
-            if (m_InputSettings.ValidateInputReference == null)
-                m_InputSettings.ValidateInputReference = InputReferencerFinder.FindReference("Validate");
+            //if (m_InputSettings.ValidateInputReference == null)
+            //    m_InputSettings.ValidateInputReference = InputReferencerFinder.FindReference("Validate");
 
-            if (m_InputSettings.ValidateInputReference != null)
-            {
-                m_InputSettings.ValidateInputReference.action.Enable();
-            }
+            //if (m_InputSettings.ValidateInputReference != null)
+            //{
+            //    m_InputSettings.ValidateInputReference.action.Enable();
+            //}
 
-            if (m_InputSettings.CancelInputReference == null)
-                m_InputSettings.CancelInputReference = InputReferencerFinder.FindReference("Cancel");
+            //if (m_InputSettings.CancelInputReference == null)
+            //    m_InputSettings.CancelInputReference = InputReferencerFinder.FindReference("Cancel");
 
-            if (m_InputSettings.CancelInputReference != null)
-            {
-                m_InputSettings.CancelInputReference.action.Enable();
-            }
+            //if (m_InputSettings.CancelInputReference != null)
+            //{
+            //    m_InputSettings.CancelInputReference.action.Enable();
+            //}
 
-            if (m_InputSettings.SelectInputReference == null)
-                m_InputSettings.SelectInputReference = InputReferencerFinder.FindReference("Select");
+            //if (m_InputSettings.SelectInputReference == null)
+            //    m_InputSettings.SelectInputReference = InputReferencerFinder.FindReference("Select");
 
-            if (m_InputSettings.SelectInputReference != null)
-            {
-                m_InputSettings.SelectInputReference.action.Enable();
-            }
+            //if (m_InputSettings.SelectInputReference != null)
+            //{
+            //    m_InputSettings.SelectInputReference.action.Enable();
+            //}
 
-            if (m_InputSettings.RotateModeInputReference == null)
-                m_InputSettings.RotateModeInputReference = InputReferencerFinder.FindReference("Rotate");
+            //if (m_InputSettings.RotateModeInputReference == null)
+            //    m_InputSettings.RotateModeInputReference = InputReferencerFinder.FindReference("Rotate");
 
-            if (m_InputSettings.RotateModeInputReference != null)
-            {
-                m_InputSettings.RotateModeInputReference.action.Enable();
-            }
+            //if (m_InputSettings.RotateModeInputReference != null)
+            //{
+            //    m_InputSettings.RotateModeInputReference.action.Enable();
+            //}
 
-            if (m_InputSettings.PlacingModeInputReference == null)
-                m_InputSettings.PlacingModeInputReference = InputReferencerFinder.FindReference("Place Mode");
+            //if (m_InputSettings.PlacingModeInputReference == null)
+            //    m_InputSettings.PlacingModeInputReference = InputReferencerFinder.FindReference("Place Mode");
 
-            if (m_InputSettings.PlacingModeInputReference != null)
-            {
-                m_InputSettings.PlacingModeInputReference.action.Enable();
-            }
+            //if (m_InputSettings.PlacingModeInputReference != null)
+            //{
+            //    m_InputSettings.PlacingModeInputReference.action.Enable();
+            //}
 
-            if (m_InputSettings.EditingModeInputReference == null)
-                m_InputSettings.EditingModeInputReference = InputReferencerFinder.FindReference("Edit Mode");
+            //if (m_InputSettings.EditingModeInputReference == null)
+            //    m_InputSettings.EditingModeInputReference = InputReferencerFinder.FindReference("Edit Mode");
 
-            if (m_InputSettings.EditingModeInputReference != null)
-            {
-                m_InputSettings.EditingModeInputReference.action.Enable();
-            }
+            //if (m_InputSettings.EditingModeInputReference != null)
+            //{
+            //    m_InputSettings.EditingModeInputReference.action.Enable();
+            //}
 
-            if (m_InputSettings.DestroyingModeInputReference == null)
-                m_InputSettings.DestroyingModeInputReference = InputReferencerFinder.FindReference("Destruction Mode");
+            //if (m_InputSettings.DestroyingModeInputReference == null)
+            //    m_InputSettings.DestroyingModeInputReference = InputReferencerFinder.FindReference("Destruction Mode");
 
-            if (m_InputSettings.DestroyingModeInputReference != null)
-            {
-                m_InputSettings.DestroyingModeInputReference.action.Enable();
-            }
+            //if (m_InputSettings.DestroyingModeInputReference != null)
+            //{
+            //    m_InputSettings.DestroyingModeInputReference.action.Enable();
+            //}
         }
 
         void OnDestroy()

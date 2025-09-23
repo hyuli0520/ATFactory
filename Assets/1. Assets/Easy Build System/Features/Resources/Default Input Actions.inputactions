@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "Default Input Actions",
     "maps": [
         {
@@ -198,7 +199,7 @@
                     "name": "Validate",
                     "type": "Button",
                     "id": "ade35e05-dcfd-4eba-9465-14b5462350c2",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -522,7 +523,7 @@
                     "name": "Toggle",
                     "type": "Button",
                     "id": "5dff9827-a7bf-4e54-9e0f-8df963966401",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

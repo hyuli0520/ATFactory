@@ -17,10 +17,12 @@ public class PlayerController : MonoBehaviour
     private bool _isMining = false;
 
     private InputSystem_Actions input;
+    private PlayerBuilding build;
 
     private void Awake()
     {
         var controller = GetComponent<CharacterController>();
+        build = GetComponent<PlayerBuilding>();
         input = new InputSystem_Actions();
 
         _inputReader = new NewInputReader(input);
@@ -44,8 +46,36 @@ public class PlayerController : MonoBehaviour
         if (!ui.activeInven)
         {
             _look.Look(inputRotation);
-            if (_inputReader.ReadLeftClick() && !_isMining)
-                TryMine();
+
+            if (ui.hotbar.slots[ui.hotbar.currentIndex].itemData != null && ui.hotbar.slots[ui.hotbar.currentIndex].itemData.itemType == ItemType.Build)
+            {
+                if (_inputReader.ReadLeftClick())
+                {
+                    build.Validate(build.nowMode);
+                }
+                if (_inputReader.ReadBuild())
+                {
+                    build.Build();
+                }
+                if (_inputReader.ReadEdit())
+                {
+                    build.Edit();
+                }
+                if (_inputReader.ReadDelete())
+                {
+                    build.Delete();
+                }
+                if (_inputReader.ReadRotate())
+                {
+                    build.Rotate();
+                }
+            }
+            else
+            {
+                if (_inputReader.ReadLeftClick() && !_isMining)
+                    TryMine();
+            }
+
             if (Managers.UI.hotbar != null)
                 Managers.UI.hotbar.WheelSlot(input);
         }
@@ -79,8 +109,20 @@ public class PlayerController : MonoBehaviour
     private IEnumerator MineRoutine(IMinable target)
     {
         _isMining = true;
-        yield return new WaitForSeconds(_tool.MiningTime);
         _tool.Use(target);
+        yield return new WaitForSeconds(_tool.MiningTime);
         _isMining = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (Camera.main == null) return;
+
+        Gizmos.color = Color.red;
+        Vector3 camPos = Camera.main.transform.position;
+        Vector3 camForward = Camera.main.transform.forward;
+
+        Gizmos.DrawLine(camPos, camPos + camForward * range);
+        Gizmos.DrawSphere(camPos + camForward * range, 0.1f);
     }
 }

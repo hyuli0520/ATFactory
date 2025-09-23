@@ -37,4 +37,29 @@ public class NewInputReader : IInputReader
     {
         return _input.Player.Inventory.triggered;
     }
+
+    public bool ReadBuild()
+    {
+        return _input.Building.PlaceMode.triggered;
+    }
+
+    public bool ReadEdit()
+    {
+        return _input.Building.EditMode.triggered;
+    }
+
+    public bool ReadDelete()
+    {
+        return _input.Building.DestructionMode.triggered;
+    }
+
+    public bool ReadRotate()
+    {
+        return _input.Building.Rotate.triggered;
+    }
+
+    public bool ReadCancel()
+    {
+        return _input.Building.Cancel.triggered;
+    }
 }

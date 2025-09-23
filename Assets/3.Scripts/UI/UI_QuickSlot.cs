@@ -1,3 +1,4 @@
+using EasyBuildSystem.Features.Runtime.Buildings.Placer;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -7,8 +8,11 @@ public class UI_QuickSlot : MonoBehaviour
     public List<UI_QuickSlot_Item> slots = new List<UI_QuickSlot_Item>();
     public int currentIndex;
 
+    public BuildingPlacer placer;
+
     public void Start()
     {
+        placer = BuildingPlacer.Instance;
     }
 
     public void CreateSlots(int count, Transform parent = null)
@@ -49,5 +53,20 @@ public class UI_QuickSlot : MonoBehaviour
         for (int i = 0; i < slots.Count; i++)
             slots[i].SetOutline(false);
         slots[currentIndex].SetOutline(true);
+        CheckBuildMode();
+    }
+
+    public void CheckBuildMode()
+    {
+        placer.ChangeBuildMode(BuildingPlacer.BuildMode.NONE);
+
+        ItemData item = slots[currentIndex].itemData;
+        if (item == null)
+            return;
+
+        if(item.itemType == ItemType.Build)
+        {
+            placer.SelectBuildingPart(item.part);
+        }
     }
 }
