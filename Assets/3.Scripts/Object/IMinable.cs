@@ -6,7 +6,9 @@ using UnityEngine;
 public interface IMinable
 {
     void Mine(int power);
+    void MineDigger(int power, IMinable minable);
     bool IsDepleted { get; }
+    ItemData Data { get; }
 }
 
 /// <summary>

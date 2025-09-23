@@ -72,8 +72,13 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                DetectInteractable();
+
                 if (_inputReader.ReadLeftClick() && !_isMining)
                     TryMine();
+
+                if (_inputReader.ReadInteract())
+                    TryInteract();
             }
 
             if (Managers.UI.hotbar != null)
@@ -104,6 +109,39 @@ public class PlayerController : MonoBehaviour
             if (mineable != null)
                 StartCoroutine(MineRoutine(mineable));
         }
+    }
+
+    private void TryInteract()
+    {
+        var camera = Camera.main;
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit, range))
+        {
+            var interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                interactable.Interact(this);
+                Debug.Log($"Interacted with {hit.collider.name}");
+            }
+        }
+    }
+
+    private void DetectInteractable()
+    {
+        var camera = Camera.main;
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out RaycastHit hit, range))
+        {
+            var interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                // UI에 텍스트 표시
+                Managers.UI.interactionText.SetText(interactable.GetInteractionText());
+                Managers.UI.interactionText.gameObject.SetActive(true);
+                return;
+            }
+        }
+
+        // 아무것도 없으면 텍스트 숨김
+        Managers.UI.interactionText.gameObject.SetActive(false);
     }
 
     private IEnumerator MineRoutine(IMinable target)

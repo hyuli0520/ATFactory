@@ -33,6 +33,11 @@ public class NewInputReader : IInputReader
         return _input.Player.Attack.triggered;
     }
 
+    public bool ReadInteract()
+    {
+        return _input.Player.Interact.triggered;
+    }
+
     public bool ReadTab()
     {
         return _input.Player.Inventory.triggered;
