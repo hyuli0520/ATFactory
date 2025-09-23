@@ -151,5 +151,6 @@ public class UI_Inven_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             else
                 from.ClearSlot();
         }
+        Managers.UI.hotbar.CheckBuildMode();
     }
 }

@@ -67,7 +67,6 @@ public class UI_QuickSlot : MonoBehaviour
         if(item.itemType == ItemType.Build)
         {
             placer.SelectBuildingPart(item.part);
-            placer.ChangeBuildMode(BuildingPlacer.BuildMode.PLACE);
         }
     }
 }
