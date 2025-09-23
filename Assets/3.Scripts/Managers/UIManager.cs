@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -7,6 +8,7 @@ public class UIManager
     public UI_Inventory inven;
     public UI_QuickSlot hotbar;
     public UI_Digger digger;
+    public TMP_Text interactionText;
     public bool activeInven = false;
 
     public void Init()
@@ -53,6 +55,7 @@ public class UIManager
 
                 digger.gameObject.SetActive(false);
             };
+            interactionText = Util.FindChild<TMP_Text>(canvasTransform.gameObject, "InteractionText");
         };
     }
 }

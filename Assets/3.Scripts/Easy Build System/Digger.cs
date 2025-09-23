@@ -40,7 +40,7 @@ public class Digger : MonoBehaviour, IInteractable
 
     public string GetInteractionText()
     {
-        return "E: ÈÞ´ë¿ë Ã¤±¼±â ¿­±â";
+        return "E: Open Digger";
     }
 
     public void Interact(PlayerController player)
