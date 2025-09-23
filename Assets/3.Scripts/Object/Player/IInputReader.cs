@@ -10,4 +10,9 @@ public interface IInputReader
     bool ReadJump();
     bool ReadLeftClick();
     bool ReadTab();
+    bool ReadBuild();
+    bool ReadEdit();
+    bool ReadDelete();
+    bool ReadRotate();
+    bool ReadCancel();
 }

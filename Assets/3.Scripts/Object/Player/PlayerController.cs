@@ -51,7 +51,23 @@ public class PlayerController : MonoBehaviour
             {
                 if (_inputReader.ReadLeftClick())
                 {
+                    build.Validate(build.nowMode);
+                }
+                if (_inputReader.ReadBuild())
+                {
                     build.Build();
+                }
+                if (_inputReader.ReadEdit())
+                {
+                    build.Edit();
+                }
+                if (_inputReader.ReadDelete())
+                {
+                    build.Delete();
+                }
+                if (_inputReader.ReadRotate())
+                {
+                    build.Rotate();
                 }
             }
             else
@@ -93,8 +109,20 @@ public class PlayerController : MonoBehaviour
     private IEnumerator MineRoutine(IMinable target)
     {
         _isMining = true;
-        yield return new WaitForSeconds(_tool.MiningTime);
         _tool.Use(target);
+        yield return new WaitForSeconds(_tool.MiningTime);
         _isMining = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (Camera.main == null) return;
+
+        Gizmos.color = Color.red;
+        Vector3 camPos = Camera.main.transform.position;
+        Vector3 camForward = Camera.main.transform.forward;
+
+        Gizmos.DrawLine(camPos, camPos + camForward * range);
+        Gizmos.DrawSphere(camPos + camForward * range, 0.1f);
     }
 }
