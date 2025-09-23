@@ -9,6 +9,7 @@ public interface IInputReader
     Vector2 ReadRotation();
     bool ReadJump();
     bool ReadLeftClick();
+    bool ReadInteract();
     bool ReadTab();
     bool ReadBuild();
     bool ReadEdit();
