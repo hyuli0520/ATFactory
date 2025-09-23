@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 3765418732538839213}
   - component: {fileID: 1251519946305951755}
   - component: {fileID: 7691903950301258810}
+  - component: {fileID: 7097708712546567627}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -358,6 +359,18 @@ MonoBehaviour:
   - {fileID: 1178505304687303792}
   - {fileID: 4940440657101212965}
   - {fileID: 5174317165004245735}
+--- !u!114 &7097708712546567627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832053204703281923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5eff8988101d4f41a3003b4b0cf5472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBuilding
 --- !u!1 &832309199259273178
 GameObject:
   m_ObjectHideFlags: 0
@@ -2330,7 +2343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InputSettings:
-    m_BlockWhenCursorOverUI: 0
+    m_BlockWhenCursorOverUI: 1
     m_ValidateInputReference: {fileID: 6358376302932378488, guid: 9260fea400b2696498f79dea99c99253, type: 3}
     m_CancelInputReference: {fileID: -6776656050215801594, guid: 9260fea400b2696498f79dea99c99253, type: 3}
     m_CanRotateBuildingPart: 1
