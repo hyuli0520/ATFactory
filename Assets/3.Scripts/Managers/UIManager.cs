@@ -23,10 +23,10 @@ public class UIManager
                     Debug.Log("inven is null");
 
                 var gridPanel = Util.FindChild<Transform>(inven.gameObject, "GridPanel");
-                
+
                 if (gridPanel == null)
                     Debug.Log("GridPanel 못 찾음");
-                
+
                 inven.CreateSlots(42, gridPanel);
             };
             Addressables.InstantiateAsync("UI_QuickSlot", canvasTransform).Completed += (handle) =>
@@ -51,7 +51,7 @@ public class UIManager
                 if (gridPanel == null)
                     Debug.Log("GridPanel 못 찾음");
 
-                digger.gameObject.SetActive(true);
+                digger.gameObject.SetActive(false);
             };
         };
     }

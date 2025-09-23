@@ -41,6 +41,13 @@ public class UI_Digger : MonoBehaviour
 
     public void GetAll()
     {
-        Managers.UI.inven.AddItem(item.itemData, item.count);
+        var count = item.count;
+        for (int i = 0; i < count; i++)
+        {
+            Managers.UI.inven.AddItem(item.itemData);
+            item.count--;
+        }
+
+        item.SetSlotCount(item.count);
     }
 }
