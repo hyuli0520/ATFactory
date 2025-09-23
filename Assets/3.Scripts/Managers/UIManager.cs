@@ -6,6 +6,7 @@ public class UIManager
     public Transform canvasTransform;
     public UI_Inventory inven;
     public UI_QuickSlot hotbar;
+    public UI_Digger digger;
     public bool activeInven = false;
 
     public void Init()
@@ -39,6 +40,18 @@ public class UIManager
                     Debug.Log("GridPanel 못 찾음");
 
                 hotbar.CreateSlots(5, gridPanel);
+            };
+            Addressables.InstantiateAsync("UI_Digger", canvasTransform).Completed += (handle) =>
+            {
+                digger = handle.Result.GetComponent<UI_Digger>();
+                if (digger == null)
+                    Debug.Log("hotbar is null");
+
+                var gridPanel = Util.FindChild<Transform>(digger.gameObject, "GridPanel");
+                if (gridPanel == null)
+                    Debug.Log("GridPanel 못 찾음");
+
+                digger.gameObject.SetActive(true);
             };
         };
     }
