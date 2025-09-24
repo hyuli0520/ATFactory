@@ -9,7 +9,7 @@ public class Rock : MonoBehaviour, IMinable
 
     public void Mine(int power)
     {
-        if (IsDepleted) 
+        if (IsDepleted)
             return;
 
         durability -= power;
@@ -35,5 +35,22 @@ public class Rock : MonoBehaviour, IMinable
             Managers.UI.digger.Digging(minable.Data);
             durability = 5;
         }
+    }
+
+    public bool AutoDigger(int power)
+    {
+        if (IsDepleted)
+            return true;
+
+        durability -= power;
+        Debug.Log($"Rock mined, Remaining: {durability}");
+
+        if (IsDepleted)
+        {
+            durability = 5;
+            return true;
+        }
+
+        return false;
     }
 }
