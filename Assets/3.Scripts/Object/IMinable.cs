@@ -7,6 +7,7 @@ public interface IMinable
 {
     void Mine(int power);
     void MineDigger(int power, IMinable minable);
+    bool AutoDigger(int power);
     bool IsDepleted { get; }
     ItemData Data { get; }
 }
