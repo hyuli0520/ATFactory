@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a02da97dbb7cf849b6ae0e5e224b5af, type: 3}
+  m_Name: DiggerRecipe
+  m_EditorClassIdentifier: Assembly-CSharp::Recipe
+  itemData: {fileID: 11400000, guid: 21b598d9c66a11b45821d8d00e14c144, type: 2}
+  decs: "\uD734\uB300\uC6A9 \uCC44\uAD74\uAE30\uC785\uB2C8\uB2E4."
+  materials:
+  - material: {fileID: 11400000, guid: c7a1aa89a440c084db07d22e2b7d4822, type: 2}
+    materialCount: 3
+  outputCount: 1
