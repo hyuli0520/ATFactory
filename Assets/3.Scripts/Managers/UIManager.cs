@@ -8,6 +8,7 @@ public class UIManager
     public UI_Inventory inven;
     public UI_QuickSlot hotbar;
     public UI_Digger digger;
+    public UI_CraftingTable craftingTable;
     public TMP_Text interactionText;
     public bool activeInven = false;
 
@@ -54,6 +55,14 @@ public class UIManager
                     Debug.Log("GridPanel ¸ø Ã£À½");
 
                 digger.gameObject.SetActive(false);
+            };
+            Addressables.InstantiateAsync("UI_CraftingTable", canvasTransform).Completed += (handle) =>
+            {
+                craftingTable = handle.Result.GetComponent<UI_CraftingTable>();
+                if (craftingTable == null)
+                    Debug.Log("craftingTable is null");
+
+                craftingTable.gameObject.SetActive(false);
             };
             interactionText = Util.FindChild<TMP_Text>(canvasTransform.gameObject, "InteractionText");
         };
