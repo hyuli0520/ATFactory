@@ -45,6 +45,28 @@ public class UI_Inventory : MonoBehaviour
         }
     }
 
+    public bool RemoveItem(ItemData item, int amount = 1)
+    {
+        foreach (var slot in slots)
+        {
+            Debug.Log($"slot.itemData: {slot.itemData}, item: {item}");
+            if (slot.itemData == item)
+            {
+                Debug.Log($"slot.count: {slot.count}, amount: {amount}");
+                if (slot.count >= amount)
+                {
+                    slot.count -= amount;
+                    slot.SetSlotCount(slot.count);
+                    Debug.Log("success remove item");
+                    return true;
+                }
+            }
+        }
+
+        Debug.Log("fail remove item");
+        return false;
+    }
+
     public void CreateSlots(int count, Transform parent = null)
     {
         for (int i = 0; i < count; i++)
