@@ -5,7 +5,7 @@ using UnityEngine;
 public class CubeMove : MonoBehaviour
 {
     public float speed;
-    public Vector3 direction;
+    public float3 direction;
 }
 
 public struct MoveSpeed : IComponentData
