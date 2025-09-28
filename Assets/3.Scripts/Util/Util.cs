@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public static class Util
@@ -19,5 +20,11 @@ public static class Util
         }
 
         return null;
+    }
+
+    public static float3 Bezier(float3 start, float3 control, float3 end, float t)
+    {
+        float3 u = 1 - t;
+        return u * u * start + 2 * u * t * control + t * t * end;
     }
 }
