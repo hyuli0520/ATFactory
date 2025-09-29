@@ -32,18 +32,16 @@ public class AutomaticDigger : MonoBehaviour
                 var res = minable.AutoDigger(minePower);
                 if (res)
                 {
-                    SpawnMine();
+                    minable.MakeMinedItem();
                     Debug.Log("±¤¼®");
                 }
             }
         }
     }
 
-    private void SpawnMine()
+    private void OnDrawGizmosSelected()
     {
-        Addressables.InstantiateAsync("Rock", spawner.transform).Completed += (handle) =>
-        {
-
-        };
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * mineRange);
     }
 }
