@@ -11,6 +11,7 @@ public interface IInputReader
     bool ReadLeftClick();
     bool ReadInteract();
     bool ReadTab();
+    bool ReadEscape();
     bool ReadBuild();
     bool ReadEdit();
     bool ReadDelete();

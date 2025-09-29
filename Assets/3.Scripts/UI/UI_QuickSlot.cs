@@ -2,6 +2,7 @@ using EasyBuildSystem.Features.Runtime.Buildings.Placer;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.InputSystem;
 
 public class UI_QuickSlot : MonoBehaviour
 {
@@ -27,9 +28,9 @@ public class UI_QuickSlot : MonoBehaviour
         }
     }
 
-    public void WheelSlot(InputSystem_Actions input)
+    public void WheelSlot(InputActionAsset input)
     {
-        var scroll = input.UI.ScrollWheel.ReadValue<Vector2>().y;
+        var scroll = input["ScrollWheel"].ReadValue<Vector2>().y;
         if (scroll > 0f)
         {
             currentIndex--;
