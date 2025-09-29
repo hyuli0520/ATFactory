@@ -98,6 +98,13 @@ public class PlayerController : MonoBehaviour
             else
                 Cursor.lockState = CursorLockMode.Locked;
         }
+
+        if (_inputReader.ReadEscape())
+        {
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            ui.setting.gameObject.SetActive(true);
+        }
     }
 
     private void TryMine()

@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.InputSystem.Samples.RebindUI;
 
 public class UIManager
 {
@@ -9,6 +10,8 @@ public class UIManager
     public UI_QuickSlot hotbar;
     public UI_Digger digger;
     public UI_CraftingTable craftingTable;
+    public UI_BindingKey key;
+    public UI_Setting setting;
     public TMP_Text interactionText;
     public bool activeInven = false;
 
@@ -50,6 +53,13 @@ public class UIManager
             var craftingTablePrefab = Resources.Load<UI_CraftingTable>("UI_CraftingTable");
             craftingTable = Object.Instantiate(craftingTablePrefab, canvasTransform);
             craftingTable.gameObject.SetActive(false);
+        }
+
+        // Instantiate Binding Key UI
+        {
+            var settingPrefab = Resources.Load<UI_Setting>("UI_Setting");
+            setting = Object.Instantiate(settingPrefab, canvasTransform);
+            setting.gameObject.SetActive(false);
         }
 
         // Find InteractionText
