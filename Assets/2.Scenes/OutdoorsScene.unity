@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Rock
   durability: 5
   itemData: {fileID: 11400000, guid: c7a1aa89a440c084db07d22e2b7d4822, type: 2}
+  minedItem: {fileID: 0}
 --- !u!65 &42034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -963,6 +964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Rock
   durability: 1
   itemData: {fileID: 11400000, guid: fa2566e4fdddc1942a05b1adadfe0f17, type: 2}
+  minedItem: {fileID: 0}
 --- !u!65 &1267040836
 BoxCollider:
   m_ObjectHideFlags: 0
