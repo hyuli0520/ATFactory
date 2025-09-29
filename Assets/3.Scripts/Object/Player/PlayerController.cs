@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,16 +17,16 @@ public class PlayerController : MonoBehaviour
 
     private bool _isMining = false;
 
-    private InputSystem_Actions input;
+    private PlayerInput input;
     private PlayerBuilding build;
 
     private void Awake()
     {
         var controller = GetComponent<CharacterController>();
         build = GetComponent<PlayerBuilding>();
-        input = new InputSystem_Actions();
+        input = GetComponent<PlayerInput>();
 
-        _inputReader = new NewInputReader(input);
+        _inputReader = new NewInputReader(input.actions);
         _movement = new PlayerMovement(controller, moveSpeed, gravity, jumpHeight);
         _look = new FPSLook(Camera.main.transform, transform, mouseSensitivity);
         _tool = new Pickaxe();
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
             }
 
             if (Managers.UI.hotbar != null)
-                Managers.UI.hotbar.WheelSlot(input);
+                Managers.UI.hotbar.WheelSlot(input.actions);
         }
         _movement.Move(moveDir);
 
