@@ -14,57 +14,45 @@ public class UIManager
 
     public void Init()
     {
-        Addressables.InstantiateAsync("UI_Canvas").Completed += (handle) =>
+        // Instantiate Canvas
+        var canvasPrefab = Resources.Load<GameObject>("UI_Canvas");
+        var canvasInstance = Object.Instantiate(canvasPrefab);
+        canvasTransform = canvasInstance.transform;
+
+        // Instantiate QuickSlot UI
         {
-            canvasTransform = handle.Result.transform;
-            Addressables.InstantiateAsync("UI_Inventory", canvasTransform).Completed += (handle) =>
-            {
-                inven = handle.Result.GetComponent<UI_Inventory>();
-                inven.gameObject.SetActive(false);
+            var hotbarPrefab = Resources.Load<UI_QuickSlot>("UI_QuickSlot");
+            hotbar = Object.Instantiate(hotbarPrefab, canvasTransform);
 
-                if (inven == null)
-                    Debug.Log("inven is null");
+            var gridPanel = Util.FindChild<Transform>(hotbar.gameObject, "GridPanel");
+            hotbar.CreateSlots(5, gridPanel);
+        }
 
-                var gridPanel = Util.FindChild<Transform>(inven.gameObject, "GridPanel");
+        // Instantiate Inventory UI
+        {
+            var invenPrefab = Resources.Load<UI_Inventory>("UI_Inventory");
+            inven = Object.Instantiate(invenPrefab, canvasTransform);
+            inven.gameObject.SetActive(false);
 
-                if (gridPanel == null)
-                    Debug.Log("GridPanel 못 찾음");
+            var gridPanel = Util.FindChild<Transform>(inven.gameObject, "GridPanel");
+            inven.CreateSlots(42, gridPanel);
+        }
 
-                inven.CreateSlots(42, gridPanel);
-            };
-            Addressables.InstantiateAsync("UI_QuickSlot", canvasTransform).Completed += (handle) =>
-            {
-                hotbar = handle.Result.GetComponent<UI_QuickSlot>();
-                if (hotbar == null)
-                    Debug.Log("hotbar is null");
+        // Instantiate Digger UI
+        {
+            var diggerPrefab = Resources.Load<UI_Digger>("UI_Digger");
+            digger = Object.Instantiate(diggerPrefab, canvasTransform);
+            digger.gameObject.SetActive(false);
+        }
 
-                var gridPanel = Util.FindChild<Transform>(hotbar.gameObject, "GridPanel");
-                if (gridPanel == null)
-                    Debug.Log("GridPanel 못 찾음");
+        // Instantiate CraftingTable UI
+        {
+            var craftingTablePrefab = Resources.Load<UI_CraftingTable>("UI_CraftingTable");
+            craftingTable = Object.Instantiate(craftingTablePrefab, canvasTransform);
+            craftingTable.gameObject.SetActive(false);
+        }
 
-                hotbar.CreateSlots(5, gridPanel);
-            };
-            Addressables.InstantiateAsync("UI_Digger", canvasTransform).Completed += (handle) =>
-            {
-                digger = handle.Result.GetComponent<UI_Digger>();
-                if (digger == null)
-                    Debug.Log("hotbar is null");
-
-                var gridPanel = Util.FindChild<Transform>(digger.gameObject, "GridPanel");
-                if (gridPanel == null)
-                    Debug.Log("GridPanel 못 찾음");
-
-                digger.gameObject.SetActive(false);
-            };
-            Addressables.InstantiateAsync("UI_CraftingTable", canvasTransform).Completed += (handle) =>
-            {
-                craftingTable = handle.Result.GetComponent<UI_CraftingTable>();
-                if (craftingTable == null)
-                    Debug.Log("craftingTable is null");
-
-                craftingTable.gameObject.SetActive(false);
-            };
-            interactionText = Util.FindChild<TMP_Text>(canvasTransform.gameObject, "InteractionText");
-        };
+        // Find InteractionText
+        interactionText = Util.FindChild<TMP_Text>(canvasTransform.gameObject, "InteractionText");
     }
 }
