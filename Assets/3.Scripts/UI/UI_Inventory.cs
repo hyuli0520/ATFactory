@@ -71,11 +71,9 @@ public class UI_Inventory : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            Addressables.InstantiateAsync("UI_Inven_Item", parent).Completed += (handle) =>
-            {
-                var item = handle.Result.GetComponent<UI_Inven_Item>();
-                slots.Add(item);
-            };
+            var item = Resources.Load<UI_Inven_Item>("UI_Inven_Item");
+            item = Instantiate(item, parent);
+            slots.Add(item);
         }
     }
 }

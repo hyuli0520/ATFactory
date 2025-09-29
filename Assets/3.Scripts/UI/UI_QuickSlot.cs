@@ -19,13 +19,11 @@ public class UI_QuickSlot : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            Addressables.InstantiateAsync("UI_QuickSlot_Item", parent).Completed += (handle) =>
-            {
-                var item = handle.Result.GetComponent<UI_QuickSlot_Item>();
-                slots.Add(item);
+            var item = Resources.Load<UI_QuickSlot_Item>("UI_QuickSlot_Item");
+            item = Instantiate(item, parent);
+            slots.Add(item);
 
-                slots[0].SetOutline(true);
-            };
+            slots[0].SetOutline(true);
         }
     }
 
