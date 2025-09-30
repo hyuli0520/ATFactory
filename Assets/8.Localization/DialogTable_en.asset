@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: DialogTable_en
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: ae209a838b53bda4b954679e1d17e30b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 30299222016
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1389492793344
+    m_Localized: Setting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1785590280192
+    m_Localized: BindingKey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2145050521600
+    m_Localized: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2240487714816
+    m_Localized: Jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2390442471424
+    m_Localized: Attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2503604793344
+    m_Localized: Interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2726309752832
+    m_Localized: Rotate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2745419001856
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2701739520000
+    m_Localized: Destruction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2687483080704
+    m_Localized: Edit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2629786234880
+    m_Localized: Place
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2593190932480
+    m_Localized: Inventory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13542102757376
+    m_Localized: Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13542132117504
+    m_Localized: Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13542140506112
+    m_Localized: Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21909596631040
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
