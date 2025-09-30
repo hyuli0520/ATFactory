@@ -86,6 +86,10 @@ MonoBehaviour:
     m_Key: Language
     m_Metadata:
       m_Items: []
+  - m_Id: 80189798838272
+    m_Key: Quality
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
