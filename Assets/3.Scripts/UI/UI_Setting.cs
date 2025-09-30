@@ -5,6 +5,7 @@ public class UI_Setting : MonoBehaviour
 {
     public GameObject bindingKey;
     public GameObject localization;
+    public GameObject hdrp;
 
     public void Exit()
     {
@@ -17,11 +18,19 @@ public class UI_Setting : MonoBehaviour
     {
         bindingKey.SetActive(true);
         localization.SetActive(false);
+        hdrp.SetActive(false);
     }
     public void ClickLocalization()
     {
         bindingKey.SetActive(false);
         localization.SetActive(true);
+        hdrp.SetActive(false);
+    }
+    public void ClickQuality()
+    {
+        bindingKey.SetActive(false);
+        localization.SetActive(false);
+        hdrp.SetActive(true);
     }
 
     public void ClickEnglish()
