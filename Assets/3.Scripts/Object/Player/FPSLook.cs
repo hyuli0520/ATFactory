@@ -16,6 +16,9 @@ public class FPSLook : ILook
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    /// <summary>
+    /// Handle player camera rotation based on mouse input
+    /// </summary>
     public void Look(Vector2 delta)
     {
         float mouseX = delta.x * mouseSensitivity;

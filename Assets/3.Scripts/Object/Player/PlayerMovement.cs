@@ -17,6 +17,9 @@ public class PlayerMovement : IMovement
         _jumpHeight = jumpHeight;
     }
 
+    /// <summary>
+    /// Moves the player in the given direction with gravity applied
+    /// </summary>
     public void Move(Vector3 direction)
     {
         Vector3 move = direction * _speed;
@@ -29,6 +32,9 @@ public class PlayerMovement : IMovement
         _controller.Move(_velocity * Time.deltaTime);
     }
 
+    /// <summary>
+    /// Makes the player jump if grounded
+    /// </summary>
     public void Jump()
     {
         if (_controller.isGrounded )

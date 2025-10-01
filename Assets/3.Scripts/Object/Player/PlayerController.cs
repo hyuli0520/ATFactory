@@ -108,6 +108,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Attempts to mine a minable object
+    /// </summary>
     private void TryMine()
     {
         var camera = Camera.main;
@@ -119,6 +122,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Attempts to interact an interactable object
+    /// </summary>
     private void TryInteract()
     {
         var camera = Camera.main;
@@ -133,6 +139,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Detech to interact if interactable object is not null
+    /// </summary>
     private void DetectInteractable()
     {
         var camera = Camera.main;
@@ -141,14 +150,13 @@ public class PlayerController : MonoBehaviour
             var interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                // UI에 텍스트 표시
+                // Show text in ui
                 Managers.UI.interactionText.SetText(interactable.GetInteractionText());
                 Managers.UI.interactionText.gameObject.SetActive(true);
                 return;
             }
         }
 
-        // 아무것도 없으면 텍스트 숨김
         Managers.UI.interactionText.gameObject.SetActive(false);
     }
 
@@ -160,6 +168,9 @@ public class PlayerController : MonoBehaviour
         _isMining = false;
     }
 
+    /// <summary>
+    /// Visualizes the interact range in the editor
+    /// </summary>
     private void OnDrawGizmos()
     {
         if (Camera.main == null) return;
