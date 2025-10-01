@@ -81,12 +81,11 @@ public class Rock : MonoBehaviour, IMinable
             if (ids[i].ID == resourceId)
             {
                 var foundEntity = entities[i];
-                // 컴포넌트 추가로 신호 전달
                 entityManager.AddComponentData(foundEntity, new SpawnTrigger { Trigger = true });
-                ids.Dispose();
-                entities.Dispose();
             }
         }
+        ids.Dispose();
+        entities.Dispose();
     }
 }
 
