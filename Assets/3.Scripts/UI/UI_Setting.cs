@@ -33,18 +33,6 @@ public class UI_Setting : MonoBehaviour
         hdrp.SetActive(true);
     }
 
-    public void ClickEnglish()
-    {
-        UpdateLocalization(0);
-    }
-    public void ClickKorea()
-    {
-        UpdateLocalization(2);
-    }
-    public void ClickJapanese()
-    {
-        UpdateLocalization(1);
-    }
     public void UpdateLocalization(int index)
     {   
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];
