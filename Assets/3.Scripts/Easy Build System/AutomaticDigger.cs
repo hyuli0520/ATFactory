@@ -4,9 +4,9 @@ using UnityEngine.AddressableAssets;
 public class AutomaticDigger : MonoBehaviour
 {
     [Header("Mining Settings")]
-    public float mineInterval = 1.0f;
-    public int minePower = 2;
-    public float mineRange = 1.0f;
+    public float mineInterval = 1.0f; // Time between mining attemps
+    public int minePower = 2; // Mining Strength
+    public float mineRange = 1.0f; // Mining distance
 
     private float _timer;
 
@@ -22,6 +22,9 @@ public class AutomaticDigger : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Attempts to mine a minable object below this object
+    /// </summary>
     private void TryMine()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, mineRange))
@@ -39,6 +42,9 @@ public class AutomaticDigger : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Visualizes the mining range in the editor
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
