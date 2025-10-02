@@ -29,6 +29,9 @@ public class UI_CraftingTable : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays required materials and output item for the selected recipe
+    /// </summary>
     public void ShowNeedAndOutputItem(Recipe r)
     {
         for (int i = 0; i < r.materials.Count; i++)
@@ -45,12 +48,18 @@ public class UI_CraftingTable : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Attempts to craft the current recipe by removing materials and adding the result to output
+    /// </summary>
     public void ClickCraftingButton()
     {
         if (Managers.UI.inven.RemoveItem(nowRecipe.materials[0].material, nowRecipe.materials[0].materialCount))
             output.AddItem(nowRecipe.itemData, nowRecipe.outputCount);
     }
 
+    /// <summary>
+    /// Close the crafting table ui
+    /// </summary>
     public void Exit()
     {
         gameObject.SetActive(false);
