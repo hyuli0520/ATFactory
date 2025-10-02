@@ -53,8 +53,25 @@ public class UI_CraftingTable : MonoBehaviour
     /// </summary>
     public void ClickCraftingButton()
     {
-        if (Managers.UI.inven.RemoveItem(nowRecipe.materials[0].material, nowRecipe.materials[0].materialCount))
-            output.AddItem(nowRecipe.itemData, nowRecipe.outputCount);
+        bool canCraft = true;
+        foreach (var mat in nowRecipe.materials)
+        {
+            if (!Managers.UI.inven.HasItem(mat.material, mat.materialCount))
+            {
+                canCraft = false;
+                break;
+            }
+        }
+
+        if (!canCraft)
+            return;
+
+        foreach (var mat in nowRecipe.materials)
+        {
+            Managers.UI.inven.RemoveItem(mat.material, mat.materialCount);
+        }
+
+        output.AddItem(nowRecipe.itemData, nowRecipe.outputCount);
     }
 
     /// <summary>

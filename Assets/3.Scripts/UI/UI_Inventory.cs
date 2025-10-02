@@ -87,4 +87,23 @@ public class UI_Inventory : MonoBehaviour
             slots.Add(item);
         }
     }
+
+    /// <summary>
+    /// Check the given item from inventory
+    /// </summary>
+    public bool HasItem(ItemData item, int amount = 1)
+    {
+        int total = 0;
+        foreach (var slot in slots)
+        {
+            if (slot.itemData == item)
+            {
+                total += slot.count;
+                if (total >= amount)
+                    return true;
+            }
+        }
+
+        return false;
+    }
 }
