@@ -79,6 +79,7 @@ public class UI_Inventory : MonoBehaviour
     /// </summary>
     public void CreateSlots(int count, Transform parent = null)
     {
+        slots.Clear();
         for (int i = 0; i < count; i++)
         {
             var item = Resources.Load<UI_Inven_Item>("UI_Inven_Item");
