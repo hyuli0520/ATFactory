@@ -34,6 +34,12 @@ public class UI_CraftingTable : MonoBehaviour
     /// </summary>
     public void ShowNeedAndOutputItem(Recipe r)
     {
+        foreach (Transform child in grid.transform)
+        {
+            Addressables.Release(child.gameObject);
+            Destroy(child.gameObject);
+        }
+
         for (int i = 0; i < r.materials.Count; i++)
         {
             int index = i;
