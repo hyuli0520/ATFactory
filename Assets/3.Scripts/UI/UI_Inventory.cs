@@ -6,6 +6,10 @@ public class UI_Inventory : MonoBehaviour
 {
     public List<UI_Inven_Item> slots = new List<UI_Inven_Item>();
 
+    /// <summary>
+    /// Add an item to inventory
+    /// Try to stack into first slot, then uses empty slot
+    /// </summary>
     public void AddItem(ItemData item, int amount = 1)
     {
         foreach (var slot in slots)
@@ -45,6 +49,9 @@ public class UI_Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Removes the given item from inventory if available
+    /// </summary>
     public bool RemoveItem(ItemData item, int amount = 1)
     {
         foreach (var slot in slots)
@@ -67,6 +74,9 @@ public class UI_Inventory : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Creates inventory slots and adds them to the slots list
+    /// </summary>
     public void CreateSlots(int count, Transform parent = null)
     {
         for (int i = 0; i < count; i++)

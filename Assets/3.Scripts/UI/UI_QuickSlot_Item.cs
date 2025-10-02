@@ -9,6 +9,9 @@ public class UI_QuickSlot_Item : UI_Inven_Item
     {
     }
 
+    /// <summary>
+    /// Show outline highlight for this quick slot item
+    /// </summary>
     public void SetOutline(bool isOutline)
     {
         outLine.SetActive(isOutline);

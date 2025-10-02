@@ -16,6 +16,9 @@ public class UI_QuickSlot : MonoBehaviour
         placer = BuildingPlacer.Instance;
     }
 
+    /// <summary>
+    /// Creates inventory slots and adds them to the slots list
+    /// </summary>
     public void CreateSlots(int count, Transform parent = null)
     {
         for (int i = 0; i < count; i++)
@@ -28,6 +31,9 @@ public class UI_QuickSlot : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Switches quick slots using mouse scroll input
+    /// </summary>
     public void WheelSlot(InputActionAsset input)
     {
         var scroll = input["ScrollWheel"].ReadValue<Vector2>().y;
@@ -47,6 +53,9 @@ public class UI_QuickSlot : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the UI outline to reflect the current slot selection
+    /// </summary>
     public void UpdateHotbarUI()
     {
         for (int i = 0; i < slots.Count; i++)
@@ -55,6 +64,9 @@ public class UI_QuickSlot : MonoBehaviour
         CheckBuildMode();
     }
 
+    /// <summary>
+    /// Updates build mode based on the currently selected slot item
+    /// </summary>
     public void CheckBuildMode()
     {
         placer.ChangeBuildMode(BuildingPlacer.BuildMode.NONE);
