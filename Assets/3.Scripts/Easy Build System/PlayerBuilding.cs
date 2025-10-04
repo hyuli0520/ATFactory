@@ -13,6 +13,9 @@ public class PlayerBuilding : MonoBehaviour
         nowMode = BuildingPlacer.BuildMode.NONE;
     }
 
+    /// <summary>
+    /// Executes the action corresponding to the given build mode
+    /// </summary>
     public void Validate(BuildingPlacer.BuildMode mode)
     {
         switch (mode)
@@ -30,24 +33,36 @@ public class PlayerBuilding : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set build mode to place
+    /// </summary>
     public void Build()
     {
         placer.ChangeBuildMode(BuildingPlacer.BuildMode.PLACE);
         nowMode = BuildingPlacer.BuildMode.PLACE;
     }
 
+    /// <summary>
+    /// Set build mode to edit
+    /// </summary>
     public void Edit()
     {
         placer.ChangeBuildMode(BuildingPlacer.BuildMode.EDIT);
         nowMode = BuildingPlacer.BuildMode.EDIT;
     }
 
+    /// <summary>
+    /// Set build mode to delete
+    /// </summary>
     public void Delete()
     {
         placer.ChangeBuildMode(BuildingPlacer.BuildMode.DESTROY);
         nowMode = BuildingPlacer.BuildMode.DESTROY;
     }
 
+    /// <summary>
+    /// Rotates the currently selected building preview
+    /// </summary>
     public void Rotate()
     {
         placer.RotatePreview();

@@ -7,11 +7,17 @@ public class UI_Digger : MonoBehaviour
     [SerializeField] private Button getAllButton;
     [SerializeField] public UI_Inven_Item item;
 
+    /// <summary>
+    /// Close the digger ui
+    /// </summary>
     public void Exit()
     {
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Adds mined items to the digger slot, stacking if possible
+    /// </summary>
     public void Digging(ItemData itemData, int count = 1)
     {
         if (!item.IsEmpty && item.itemData == itemData && item.count < item.maxStack)
@@ -39,6 +45,9 @@ public class UI_Digger : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Transfer all stored items to player inventory
+    /// </summary>
     public void GetAll()
     {
         var count = item.count;

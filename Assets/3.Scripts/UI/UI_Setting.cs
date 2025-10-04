@@ -7,6 +7,9 @@ public class UI_Setting : MonoBehaviour
     public GameObject localization;
     public GameObject hdrp;
 
+    /// <summary>
+    /// Closes the settings UI and resumes the game.
+    /// </summary>
     public void Exit()
     {
         Managers.UI.setting.gameObject.SetActive(false);
@@ -14,18 +17,27 @@ public class UI_Setting : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    /// <summary>
+    /// Shows the key binding panel
+    /// </summary>
     public void ClickBinding()
     {
         bindingKey.SetActive(true);
         localization.SetActive(false);
         hdrp.SetActive(false);
     }
+    /// <summary>
+    /// Shows the localization panel
+    /// </summary>
     public void ClickLocalization()
     {
         bindingKey.SetActive(false);
         localization.SetActive(true);
         hdrp.SetActive(false);
     }
+    /// <summary>
+    /// Shows the quality settings panel
+    /// </summary>
     public void ClickQuality()
     {
         bindingKey.SetActive(false);
@@ -33,18 +45,10 @@ public class UI_Setting : MonoBehaviour
         hdrp.SetActive(true);
     }
 
-    public void ClickEnglish()
-    {
-        UpdateLocalization(0);
-    }
-    public void ClickKorea()
-    {
-        UpdateLocalization(2);
-    }
-    public void ClickJapanese()
-    {
-        UpdateLocalization(1);
-    }
+    /// <summary>
+    /// Updates the game localization to the setting ui
+    /// 0 is English, 1 is Japanese, 2 is Korean
+    /// </summary>
     public void UpdateLocalization(int index)
     {   
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[index];

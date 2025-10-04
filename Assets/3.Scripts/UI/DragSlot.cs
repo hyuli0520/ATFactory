@@ -16,12 +16,18 @@ public class DragSlot : MonoBehaviour
         SetColor(0);
     }
 
+    /// <summary>
+    /// Sets the drag image sprite to the given item and makes it visible
+    /// </summary>
     public void DragSetImage(ItemData itemData)
     {
         imageItem.sprite = itemData.icon;
         SetColor(1);
     }
 
+    /// <summary>
+    /// Updates the drag image alpha value
+    /// </summary>
     public void SetColor(float alpha)
     {
         Color color = imageItem.color;

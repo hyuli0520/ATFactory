@@ -23,6 +23,9 @@ public class ScrollViewController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Instantiate a new ui object and add it to the scrollview
+    /// </summary>
     public void AddNewUIObject(Sprite img, string txt, Action<RectTransform> onCreated)
     {
         Addressables.InstantiateAsync(objectName, scrollRect.content).Completed += (handle) =>

@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// Represents item data used in inventory
+/// </summary>
 [CreateAssetMenu(menuName = "Inventory/ItemData")]
 public class ItemData : ScriptableObject
 {
@@ -14,6 +17,9 @@ public class ItemData : ScriptableObject
     public int maxStack = 99;
 }
 
+/// <summary>
+/// Types of inventory item
+/// </summary>
 public enum ItemType
 {
     Build,
@@ -30,9 +36,15 @@ public class UI_Inven_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [SerializeField] private Image iconImage;
     [SerializeField] private TMP_Text countText;
 
+    /// <summary>
+    /// Returns true if the given item can be stacked in this slot
+    /// </summary>
     public bool CanAdd(ItemData newItem) =>
         itemData != null && itemData == newItem && count < maxStack;
 
+    /// <summary>
+    /// Add amount to the item count
+    /// </summary>
     public void Add(int amount)
     {
         count = Mathf.Min(count + amount, maxStack);
@@ -79,6 +91,9 @@ public class UI_Inven_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         iconImage.color = color;
     }
 
+    /// <summary>
+    /// Add item in inventory slots
+    /// </summary>
     public void AddItem(ItemData data, int itemCount = 1)
     {
         itemData = data;
@@ -92,6 +107,9 @@ public class UI_Inven_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         SetColor(1);
     }
 
+    /// <summary>
+    /// Set slot count by the given amount
+    /// </summary>
     public void SetSlotCount(int itemCount)
     {
         count += itemCount;
@@ -101,6 +119,9 @@ public class UI_Inven_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             ClearSlot();
     }
 
+    /// <summary>
+    /// Clear this slot and hide ui
+    /// </summary>
     private void ClearSlot()
     {
         itemData = null;
@@ -112,6 +133,9 @@ public class UI_Inven_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         countText.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Swaps or merges items with the currently dragged slot
+    /// </summary>
     public void ChangeSlot()
     {
         var from = DragSlot.instance.dragSlot;

@@ -3,10 +3,10 @@ using UnityEngine;
 public class Digger : MonoBehaviour, IInteractable
 {
     [Header("Mining Settings")]
-    public float mineInterval = 1.0f;
-    public int minePower = 2;
-    public float mineRange = 1.0f;
-    
+    public float mineInterval = 1.0f; // Time between mining attemps
+    public int minePower = 2; // Mining Strength
+    public float mineRange = 1.0f; // Mining distance
+
     private float _timer;
 
     private void Update()
@@ -19,6 +19,9 @@ public class Digger : MonoBehaviour, IInteractable
         }
     }
 
+    /// <summary>
+    /// Attempts to mine a minable object below this object
+    /// </summary>
     private void TryMine()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, mineRange))
@@ -32,17 +35,26 @@ public class Digger : MonoBehaviour, IInteractable
         }
     }
 
+    /// <summary>
+    /// Visualizes the mining range in the editor
+    /// </summary>
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * mineRange);
     }
 
+    /// <summary>
+    /// Returns the interaction text for this object
+    /// </summary>
     public string GetInteractionText()
     {
         return "E: Open Digger";
     }
 
+    /// <summary>
+    /// Opens the digger UI and inventory
+    /// </summary>
     public void Interact(PlayerController player)
     {
         var ui = Managers.UI;

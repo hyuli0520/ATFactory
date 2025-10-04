@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Read Input Value
+/// </summary>
 public class NewInputReader : IInputReader
 {
     private readonly InputActionAsset _action;
@@ -11,7 +14,6 @@ public class NewInputReader : IInputReader
         _action.Enable();
     }
 
-    // ReadValue New Input System
     public Vector3 ReadMovement()
     {
         Vector2 inputVec = _action["Move"].ReadValue<Vector2>();
