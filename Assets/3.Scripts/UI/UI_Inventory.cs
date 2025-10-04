@@ -79,11 +79,31 @@ public class UI_Inventory : MonoBehaviour
     /// </summary>
     public void CreateSlots(int count, Transform parent = null)
     {
+        slots.Clear();
         for (int i = 0; i < count; i++)
         {
             var item = Resources.Load<UI_Inven_Item>("UI_Inven_Item");
             item = Instantiate(item, parent);
             slots.Add(item);
         }
+    }
+
+    /// <summary>
+    /// Check the given item from inventory
+    /// </summary>
+    public bool HasItem(ItemData item, int amount = 1)
+    {
+        int total = 0;
+        foreach (var slot in slots)
+        {
+            if (slot.itemData == item)
+            {
+                total += slot.count;
+                if (total >= amount)
+                    return true;
+            }
+        }
+
+        return false;
     }
 }
