@@ -6,12 +6,15 @@ using UnityEngine;
 public class Rock : MonoBehaviour, IMinable
 {
     [SerializeField] private int durability = 5;
-    public bool IsDepleted => durability <= 0;
+    public bool IsDepleted => durability <= 0; // Indicates whether the rock is depleted
     public ItemData itemData;
-    public ItemData Data => itemData;
-    public Guid resourceId;
-    public GameObject minedItem;
+    public ItemData Data => itemData; // Item data rewarded when the rock is mined
+    public Guid resourceId; // Unique identifier for the resource, used for ECS linkage
+    public GameObject minedItem; // Prefab of the mined item to be spawned after mining
 
+    /// <summary>
+    /// Handles mining interaction by a player or tool
+    /// </summary>
     public void Mine(int power)
     {
         if (IsDepleted)
@@ -27,6 +30,9 @@ public class Rock : MonoBehaviour, IMinable
         }
     }
 
+    /// <summary>
+    /// Handles mining a digger
+    /// </summary>
     public void MineDigger(int power, IMinable minable)
     {
         if (IsDepleted)
@@ -42,6 +48,9 @@ public class Rock : MonoBehaviour, IMinable
         }
     }
 
+    /// <summary>
+    /// Handles automated mining for ECS-based diggers
+    /// </summary>
     public bool AutoDigger(int power)
     {
         if (IsDepleted)
@@ -59,6 +68,9 @@ public class Rock : MonoBehaviour, IMinable
         return false;
     }
 
+    /// <summary>
+    /// ECS baker class that converts this MonoBehaviour into ECS data components
+    /// </summary>
     class Baker : Baker<Rock>
     {
         public override void Bake(Rock authoring)
@@ -69,6 +81,9 @@ public class Rock : MonoBehaviour, IMinable
         }
     }
 
+    /// <summary>
+    /// Triggers the ECS system to spawn a mined item based on its resource ID
+    /// </summary>
     public void MakeMinedItem()
     {
         var entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
@@ -89,6 +104,9 @@ public class Rock : MonoBehaviour, IMinable
     }
 }
 
+/// <summary>
+/// ECS component that holds data for spawning mined items
+/// </summary>
 public struct SpawnMinedItemConfig : IComponentData
 {
     public Entity MinedItemEntity;
@@ -96,6 +114,9 @@ public struct SpawnMinedItemConfig : IComponentData
     public Guid ID;
 }
 
+/// <summary>
+/// ECS component used as a trigger to initiate spawn behavior
+/// </summary>
 public struct SpawnTrigger : IComponentData
 {
     public bool Trigger;

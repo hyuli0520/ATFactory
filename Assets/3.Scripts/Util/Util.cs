@@ -22,6 +22,9 @@ public static class Util
         return null;
     }
 
+    /// <summary>
+    /// Calculate two-dimensional bezier curve 
+    /// </summary>
     public static float3 Bezier(float3 start, float3 control, float3 end, float t)
     {
         float3 u = 1 - t;
