@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Tree
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemType: 0
+  part: {fileID: 5199880111457872244, guid: c8ca89c60ba58a24993546dd05ad0ca4, type: 3}
   itemName: Tree
   icon: {fileID: 21300000, guid: bb7dc3a81c0ef1a478c672fd5e156111, type: 3}
   maxStack: 99

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rock
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemType: 0
-  part: {fileID: 7235742699713276206, guid: ad1131a458a79fc4bb750944f15214d5, type: 3}
+  part: {fileID: 6033962486869897223, guid: ad1131a458a79fc4bb750944f15214d5, type: 3}
   itemName: Rock
   icon: {fileID: 21300000, guid: d592fc6167247764e945fba083e03517, type: 3}
   maxStack: 99
