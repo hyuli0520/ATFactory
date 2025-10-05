@@ -664,7 +664,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""name"": ""Destruction Mode"",
                     ""type"": ""Button"",
                     ""id"": ""3f758d8f-8a4f-4dd0-8804-c8f10d94d51f"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -677,7 +677,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/t"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard And Mouse"",
+                    ""groups"": ""Keyboard And Mouse;Keyboard&Mouse"",
                     ""action"": ""Edit Mode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -864,7 +864,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard And Mouse"",
+                    ""groups"": ""Keyboard And Mouse;Keyboard&Mouse"",
                     ""action"": ""Place Mode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -886,7 +886,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard And Mouse"",
+                    ""groups"": ""Keyboard And Mouse;Keyboard&Mouse"",
                     ""action"": ""Destruction Mode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
