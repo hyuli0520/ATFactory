@@ -21,7 +21,17 @@ public class PlayerBuilding : MonoBehaviour
         switch (mode)
         {
             case BuildingPlacer.BuildMode.PLACE:
-                placer.PlacingBuildingPart();
+                var ui = Managers.UI;
+                bool ret = placer.PlacingBuildingPart();
+                if (ret)
+                {
+                    int remain = ui.hotbar.RemoveItem(ui.hotbar.slots[ui.hotbar.currentIndex].itemData);
+                    if (remain <= 0)
+                    {
+                        placer.ChangeBuildMode(BuildingPlacer.BuildMode.NONE);
+                        nowMode = BuildingPlacer.BuildMode.NONE;
+                    }
+                }
                 break;
             case BuildingPlacer.BuildMode.EDIT:
                 placer.EditingBuildingPart();

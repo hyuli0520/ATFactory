@@ -1164,6 +1164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EasyBuildSystem.Features.Runtime.Buildings.Manager.BuildingManager
   m_BuildingPartReferences:
   - {fileID: 6033962486869897223, guid: ad1131a458a79fc4bb750944f15214d5, type: 3}
+  - {fileID: 5199880111457872244, guid: c8ca89c60ba58a24993546dd05ad0ca4, type: 3}
   m_BuildingTypes:
   - Foundation
   - Wall

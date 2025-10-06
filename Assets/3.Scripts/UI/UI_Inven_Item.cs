@@ -112,7 +112,7 @@ public class UI_Inven_Item : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     /// </summary>
     public void SetSlotCount(int itemCount)
     {
-        count += itemCount;
+        count = itemCount;
         countText.text = itemCount.ToString();
 
         if (itemCount <= 0)
