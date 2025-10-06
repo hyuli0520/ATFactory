@@ -32,6 +32,31 @@ public class UI_QuickSlot : MonoBehaviour
     }
 
     /// <summary>
+    /// Removes the given item from inventory if available
+    /// </summary>
+    public int RemoveItem(ItemData item, int amount = 1)
+    {
+        foreach (var slot in slots)
+        {
+            Debug.Log($"slot.itemData: {slot.itemData}, item: {item}");
+            if (slot.itemData == item)
+            {
+                Debug.Log($"slot.count: {slot.count}, amount: {amount}");
+                if (slot.count >= amount)
+                {
+                    slot.count -= amount;
+                    slot.SetSlotCount(slot.count);
+                    Debug.Log($"success remove item, remain {slot.count}");
+                    return slot.count;
+                }
+            }
+        }
+
+        Debug.Log("fail remove item");
+        return 0;
+    }
+
+    /// <summary>
     /// Switches quick slots using mouse scroll input
     /// </summary>
     public void WheelSlot(InputActionAsset input)
