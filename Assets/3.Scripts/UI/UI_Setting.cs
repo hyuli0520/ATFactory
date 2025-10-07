@@ -15,6 +15,7 @@ public class UI_Setting : MonoBehaviour
         Managers.UI.setting.gameObject.SetActive(false);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+        Managers.Data.SaveAll(); // Temp
     }
 
     /// <summary>

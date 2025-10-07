@@ -6,8 +6,10 @@ public class Managers : MonoBehaviour
     public static Managers Instance { get { Init(); return instance; } }
 
     UIManager _ui = new();
+    DataManager _data = new();
 
     public static UIManager UI { get { return Instance._ui; } }
+    public static DataManager Data { get { return Instance._data; } }
 
     public static void Init()
     {
@@ -22,6 +24,7 @@ public class Managers : MonoBehaviour
             instance = go.GetComponent<Managers>();
 
             Instance._ui.Init();
+            Instance._data.Init();
         }
     }
 }

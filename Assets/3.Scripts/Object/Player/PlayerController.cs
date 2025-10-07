@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         _tool = new Pickaxe();
 
         var manager = Managers.Instance;
+        Managers.Data.LoadAll(); // Temp
     }
 
     private void Update()
