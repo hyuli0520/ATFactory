@@ -7,6 +7,7 @@ public class DataManager
     private const string SAVE_KEY = "PlayerInventorySaveAll";
     private UI_Inventory inven;
     private UI_QuickSlot hotbar;
+    public DataManagerHelper helper;
 
     /// <summary>
     /// Initializes references to inventory, hotbar, and DataManagerHelper
@@ -15,6 +16,9 @@ public class DataManager
     {
         inven = Managers.UI.inven;
         hotbar = Managers.UI.hotbar;
+
+        helper = GameObject.Find("DataManagerHelper").GetComponent<DataManagerHelper>();
+        helper.Init();
     }
 
     /// <summary>
@@ -39,6 +43,37 @@ public class DataManager
     }
 
     /// <summary>
+    /// Loads all inventory and hotbar data from persistent storage
+    /// </summary>
+    public void LoadAll()
+    {
+        if (!ES3.KeyExists(SAVE_KEY))
+        {
+            Debug.Log("Not found inventory data");
+            return;
+        }
+
+        var data = ES3.Load<InventorySaveData>(SAVE_KEY);
+        int totalCount = data.slots.Count;
+
+        int invenCount = inven.slots.Count;
+
+        for (int i = 0; i < invenCount && i < totalCount; i++)
+        {
+            LoadSlot(inven.slots[i], data.slots[i]);
+        }
+
+        for (int i = 0; i < hotbar.slots.Count; i++)
+        {
+            int index = invenCount + i;
+            if (index < totalCount)
+                LoadSlot(hotbar.slots[i], data.slots[index]);
+        }
+
+        Debug.Log("Load complete");
+    }
+
+    /// <summary>
     /// Converts a UI inventory slot into a serializable SlotData structure
     /// </summary>
     private SlotData MakeSlotData(UI_Inven_Item slot)
@@ -57,5 +92,17 @@ public class DataManager
         }
 
         return slotData;
+    }
+
+    /// <summary>
+    /// Loads item data into a specific UI slot from saved SlotData
+    /// </summary>
+    private void LoadSlot(UI_Inven_Item uiSlot, SlotData slotData)
+    {
+        if (!string.IsNullOrEmpty(slotData.itemName))
+        {
+            var item = helper.GetItem(slotData.itemName);
+            uiSlot.AddItem(item, slotData.count);
+        }
     }
 }
