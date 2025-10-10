@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Digger
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemType: 0
+  part: {fileID: 8324996573800251428, guid: 22b85288700098e4987c8ace327b4e58, type: 3}
+  itemName: Digger
+  icon: {fileID: 21300000, guid: 47bb28a2de4b9fd478d3b24f6eacdc56, type: 3}
+  maxStack: 99

@@ -1,0 +1,30 @@
+using UnityEngine;
+
+public class Managers : MonoBehaviour
+{
+    static Managers instance;
+    public static Managers Instance { get { Init(); return instance; } }
+
+    UIManager _ui = new();
+    DataManager _data = new();
+
+    public static UIManager UI { get { return Instance._ui; } }
+    public static DataManager Data { get { return Instance._data; } }
+
+    public static void Init()
+    {
+        if (instance == null)
+        {
+            GameObject go = null;
+
+            go = new GameObject { name = "@Managers" };
+            go.AddComponent<Managers>();
+
+            DontDestroyOnLoad(go);
+            instance = go.GetComponent<Managers>();
+
+            Instance._ui.Init();
+            Instance._data.Init();
+        }
+    }
+}
